@@ -7,13 +7,23 @@ const PlacementTest = () => {
   const [userAnswers, setUserAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
-  const navigate = useNavigate(); // 🔥 Fix: Thêm useNavigate
+  const [errorMessage, setErrorMessage] = useState(""); // 🔥 Thêm state để hiển thị lỗi
+  const navigate = useNavigate();
 
   const handleAnswerChange = (event, questionIndex) => {
     setUserAnswers((prevAnswers) => ({
       ...prevAnswers,
       [questionIndex]: event.target.value,
     }));
+    setErrorMessage(""); // Xóa lỗi khi chọn đáp án
+  };
+
+  const handleNextQuestion = () => {
+    if (!userAnswers[currentQuestionIndex]) {
+      setErrorMessage("⚠️ Please select an answer before proceeding.");
+      return;
+    }
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
   const handleSubmit = () => {
@@ -36,7 +46,7 @@ const PlacementTest = () => {
     };
 
     const level = getLevel(calculatedScore);
-    localStorage.setItem("userLevel", level); // ✅ Fix: Chỉ set giá trị sau khi tính toán
+    localStorage.setItem("userLevel", level);
 
     setTimeout(() => {
       navigate("/learning-path");
@@ -81,6 +91,7 @@ const PlacementTest = () => {
                 </label>
               ))}
             </div>
+            {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>} {/* 🔥 Hiển thị lỗi */}
           </div>
 
           <div className="mt-6 flex justify-between">
@@ -95,8 +106,11 @@ const PlacementTest = () => {
 
             {currentQuestionIndex < questions.length - 1 ? (
               <button
-                onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+                onClick={handleNextQuestion}
+                className={`px-6 py-2 rounded-lg transition ${
+                  userAnswers[currentQuestionIndex] ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                }`}
+                disabled={!userAnswers[currentQuestionIndex]}
               >
                 Next
               </button>

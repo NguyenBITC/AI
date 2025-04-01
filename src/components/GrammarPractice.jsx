@@ -16,7 +16,7 @@ const GrammarPractice = () => {
         setLoading(true);
         setError(null);
 
-        const genAI = new GoogleGenerativeAI("AIzaSyDd7KrRUvSafwJkh5j1d40OubayQTeJSZM");
+        const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const prompt = `Generate 15 diverse multiple-choice grammar questions strictly in the ${subPrompt} tense. Follow these criteria:
@@ -82,14 +82,18 @@ Return an array of 15 objects in this format:
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Bài Tập Ngữ Pháp</h1>
       <div className="mb-6">
         <h2 className="text-lg font-bold mb-4">Chọn loại ngữ pháp:</h2>
-        <div className="flex gap-4">
-          {[ "Present Simple", "Present Continuous", "Present Perfect", "Present Perfect Continuous",
-    "Past Simple", "Past Continuous", "Past Perfect", "Past Perfect Continuous",
-    "Future Simple", "Future Continuous", "Future Perfect", "Future Perfect Continuous"].map((tense) => (
+        <div className="flex flex-wrap gap-2">
+          {[
+            "Present Simple", "Present Continuous", "Present Perfect", "Present Perfect Continuous",
+            "Past Simple", "Past Continuous", "Past Perfect", "Past Perfect Continuous",
+            "Future Simple", "Future Continuous", "Future Perfect", "Future Perfect Continuous"
+          ].map((tense) => (
             <button
               key={tense}
               onClick={() => setSubPrompt(tense)}
-              className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+              className={`py-2 px-4 rounded ${
+                subPrompt === tense ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-blue-400"
+              }`}
             >
               {tense.replace(" Simple", "")}
             </button>
@@ -133,6 +137,7 @@ Return an array of 15 objects in this format:
             <button onClick={handleSubmit} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 w-full">
               Nộp bài
             </button>
+            
           )}
         </div>
       )}
