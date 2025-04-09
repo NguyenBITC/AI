@@ -132,6 +132,5 @@ const VocabularyPractice = () => {
 };
 
 export default VocabularyPractice;
-//thêm 1 cái bài test level A1 nếu thì gọi api update level
-//thêm 1 cái bài test level A2 nếu thì gọi api update level
-//thêm giao diện test 
+// This code is a React component for a vocabulary practice application. It allows users to select a topic and view words with their meanings and examples. Users can also mark their progress and hear the pronunciation of words.
+// The component uses the Framer Motion library for animations and the SpeechSynthesis API for text-to-speech functionality. The vocabulary data is imported from a separate file, and progress is saved to a backend server using fetch requests.

@@ -1,174 +1,129 @@
-export const questions = [
+const testinput = [
   {
-    question:
-      "What is the correct form of the verb in this sentence: 'She ____ to school every day.'",
-    options: ["go", "goes", "went", "going"],
+    question: "She ___ to school every day.",
+    options: ["go", "goes", "going", "gone"],
     answer: "goes",
   },
   {
-    question: "Which sentence is correct?",
-    options: [
-      "I am play tennis",
-      "I plays tennis",
-      "I play tennis",
-      "I played tennis",
-    ],
-    answer: "I play tennis",
+    question: "I have never ___ to Japan.",
+    options: ["be", "was", "been", "being"],
+    answer: "been",
   },
   {
-    question:
-      "Choose the correct past form: 'He ____ to the market yesterday.'",
-    options: ["goes", "went", "gone", "going"],
-    answer: "went",
+    question: "They ___ watching TV right now.",
+    options: ["is", "are", "am", "be"],
+    answer: "are",
   },
   {
-    question: "Which of these is a question in the present continuous tense?",
-    options: ["Do you eat?", "Are you eating?", "You eat?", "Is you eating?"],
-    answer: "Are you eating?",
+    question: "The cat is ___ the sofa.",
+    options: ["in", "on", "at", "under"],
+    answer: "on",
   },
   {
-    question: "Which sentence is correct?",
-    options: [
-      "She has read the book.",
-      "She read the book.",
-      "She reading the book.",
-      "She reads the book.",
-    ],
-    answer: "She has read the book.",
+    question: "If I ___ a bird, I would fly.",
+    options: ["am", "was", "were", "be"],
+    answer: "were",
   },
   {
-    question: "What is the correct article for: ____ apple?",
-    options: ["a", "an", "the", "some"],
-    answer: "an",
+    question: "She has lived here ___ 2015.",
+    options: ["since", "for", "from", "in"],
+    answer: "since",
   },
   {
-    question: "Which sentence is in the future tense?",
-    options: [
-      "I will go to the park.",
-      "I am going to the park.",
-      "I went to the park.",
-      "I go to the park.",
-    ],
-    answer: "I will go to the park.",
+    question: "Choose the synonym of 'happy'.",
+    options: ["sad", "angry", "joyful", "tired"],
+    answer: "joyful",
   },
   {
-    question:
-      "Which is the correct form of the verb in this sentence: 'They ____ to the cinema last night.'",
-    options: ["go", "went", "goes", "going"],
-    answer: "went",
-  },
-  {
-    question: "What is the synonym of 'happy'?",
-    options: ["Sad", "Joyful", "Angry", "Excited"],
-    answer: "Joyful",
-  },
-  {
-    question: "Which word is an adjective?",
-    options: ["Run", "Quickly", "Beautiful", "Sing"],
-    answer: "Beautiful",
-  },
-  {
-    question: "Choose the correct sentence:",
-    options: [
-      "He can sings well.",
-      "He can sing well.",
-      "He can sang well.",
-      "He can singing well.",
-    ],
-    answer: "He can sing well.",
-  },
-  {
-    question: "Which one is a preposition?",
-    options: ["Quickly", "Under", "Sing", "Happily"],
-    answer: "Under",
-  },
-  {
-    question:
-      "What is the correct form of the verb: 'I ____ the book already.'",
-    options: ["read", "reads", "reading", "have read"],
-    answer: "have read",
-  },
-  {
-    question:
-      "Which is the correct form of the verb: 'She ____ to the store every Saturday.'",
-    options: ["going", "goes", "go", "went"],
+    question: "He ___ to the gym every weekend.",
+    options: ["go", "went", "goes", "gone"],
     answer: "goes",
   },
   {
-    question:
-      "What is the correct future tense form of this sentence: 'I ____ to the party next week.'",
-    options: ["will go", "am going", "go", "going"],
-    answer: "will go",
+    question: "I’m looking forward to ___ you.",
+    options: ["see", "seeing", "seen", "saw"],
+    answer: "seeing",
   },
   {
-    question: "Which sentence is in the past perfect tense?",
-    options: [
-      "I have gone to the park.",
-      "I had gone to the park.",
-      "I will go to the park.",
-      "I go to the park.",
-    ],
-    answer: "I had gone to the park.",
+    question: "She is the ___ student in class.",
+    options: ["most intelligent", "more intelligent", "intelligenter", "intelligence"],
+    answer: "most intelligent",
   },
   {
-    question: "What is the opposite of 'hot'?",
-    options: ["Cold", "Warm", "Bright", "Heavy"],
-    answer: "Cold",
+    question: "They ___ lunch when I arrived.",
+    options: ["have", "had", "were having", "are having"],
+    answer: "were having",
   },
   {
-    question: "Choose the correct verb form: 'I ____ a book right now.'",
-    options: ["am reading", "reads", "read", "reading"],
-    answer: "am reading",
+    question: "This book is ___ than the other one.",
+    options: ["interesting", "interestinger", "more interesting", "most interesting"],
+    answer: "more interesting",
   },
   {
-    question: "What is the past form of 'go'?",
-    options: ["go", "went", "gone", "going"],
-    answer: "went",
+    question: "My brother ___ in the army.",
+    options: ["is", "are", "am", "be"],
+    answer: "is",
   },
   {
-    question:
-      "What is the correct form of the sentence: '____ you going to the store later?'",
-    options: ["Are", "Is", "Do", "Does"],
-    answer: "Are",
+    question: "The opposite of 'cheap' is ___.",
+    options: ["expensive", "small", "free", "fast"],
+    answer: "expensive",
   },
   {
-    question: "Which sentence is correct?",
-    options: [
-      "I seen the movie.",
-      "I will seen the movie.",
-      "I see the movie.",
-      "I have seen the movie.",
-    ],
-    answer: "I have seen the movie.",
+    question: "We haven’t seen him ___ last year.",
+    options: ["for", "since", "by", "at"],
+    answer: "since",
   },
   {
-    question: "Which of the following is a conjunction?",
-    options: ["And", "Quickly", "Under", "Happiness"],
-    answer: "And",
+    question: "There ___ a lot of people at the party.",
+    options: ["was", "were", "are", "is"],
+    answer: "were",
   },
   {
-    question: "Which sentence is in the future continuous tense?",
-    options: [
-      "I will be eating lunch at 12.",
-      "I eat lunch at 12.",
-      "I will eat lunch at 12.",
-      "I ate lunch at 12.",
-    ],
-    answer: "I will be eating lunch at 12.",
+    question: "Which word is a noun?",
+    options: ["run", "quickly", "happiness", "blue"],
+    answer: "happiness",
   },
   {
-    question: "Which sentence uses the correct form of 'to be'?",
-    options: [
-      "They are going to school.",
-      "They going to school.",
-      "They is going to school.",
-      "They be going to school.",
-    ],
-    answer: "They are going to school.",
+    question: "Could you ___ me the salt, please?",
+    options: ["pass", "passing", "passes", "passed"],
+    answer: "pass",
   },
   {
-    question: "Which of these words is a verb?",
-    options: ["Happy", "Running", "Apple", "Strong"],
-    answer: "Running",
+    question: "I wish I ___ taller.",
+    options: ["am", "was", "were", "been"],
+    answer: "were",
+  },
+  {
+    question: "He speaks English ___ than me.",
+    options: ["good", "well", "better", "best"],
+    answer: "better",
+  },
+  {
+    question: "It ___ rain tomorrow.",
+    options: ["can", "will", "might", "should"],
+    answer: "might",
+  },
+  {
+    question: "How ___ money do you have?",
+    options: ["many", "much", "few", "some"],
+    answer: "much",
+  },
+  {
+    question: "She’s interested ___ learning Spanish.",
+    options: ["on", "in", "at", "for"],
+    answer: "in",
+  },
+  {
+    question: "The man ___ stole the bag was caught.",
+    options: ["who", "which", "where", "what"],
+    answer: "who",
+  },
+  {
+    question: "I’ll call you when I ___ home.",
+    options: ["get", "got", "getting", "will get"],
+    answer: "get",
   },
 ];
+
+export default testinput;

@@ -45,15 +45,6 @@ const Home = () => {
             </button>
           </Link>
         </div>
-        <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition-transform">
-          <h2 className="text-xl font-bold mb-2">Cập Nhật Cấp Độ</h2>
-          <p className="text-sm mb-4">Kiểm tra trình độ hiện tại và cập nhật cấp độ của bạn.</p>
-          <Link to="/update-level">
-            <button className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
-              Cập nhật
-            </button>
-          </Link>
-        </div>
       </main>
     </div>
   );

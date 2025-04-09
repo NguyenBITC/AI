@@ -38,9 +38,10 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("userInfo");
-    setUser(null);
-    navigate("/login");
+    localStorage.clear(); // Xóa thông tin người dùng trong localStorage
+    setUser(null); // Xóa thông tin người dùng trong state
+    navigate("/login"); // Điều hướng đến trang đăng nhập
+    setMenuOpen(false); // Đóng menu khi đăng xuất
   };
 
   const navLinks = [
@@ -95,7 +96,7 @@ const Navbar = () => {
                   <Menu.Item>
                     {({ active }) => (
                       <button
-                        onClick={handleLogout}
+                        onClick={handleLogout} // Gọi hàm handleLogout khi người dùng đăng xuất
                         className={`block w-full text-left px-4 py-2 font-semibold ${active ? "bg-gray-300" : ""}`}
                       >
                         Logout
@@ -112,10 +113,44 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* Responsive Menu Button */}
           <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden focus:outline-none">
             {menuOpen ? <XMarkIcon className="h-8 w-8 text-white" /> : <Bars3Icon className="h-8 w-8 text-white" />}
           </button>
         </div>
+
+        {/* Responsive menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-gray-900 bg-opacity-90 text-white py-4 space-y-4">
+            {navLinks.map((item, index) => (
+              <Link
+                key={index}
+                to={item.path}
+                className={`block px-6 py-2 font-semibold ${
+                  location.pathname === item.path ? "text-yellow-400" : "hover:text-yellow-400"
+                }`}
+                onClick={() => setMenuOpen(false)} // Đóng menu khi người dùng chọn một liên kết
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="px-6">
+              {user ? (
+                <button
+                  onClick={handleLogout}
+                  className="w-full py-2 text-left text-yellow-300 font-bold"
+                >
+                  Logout
+                </button>
+              ) : (
+                <>
+                  <Link to="/login" className="block py-2 text-yellow-300">Login</Link>
+                  <Link to="/signup" className="block py-2 text-yellow-300">Sign Up</Link>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </nav>
 
       <main style={{ paddingTop: `${navHeight}px` }}>
